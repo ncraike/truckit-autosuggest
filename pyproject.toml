@@ -1,21 +1,21 @@
 [build-system]
-requires = ["hatchling"]
 build-backend = "hatchling.build"
+requires = ["hatchling"]
 
 [project]
-name = "autosuggest"
-version = "0.0.1"
 authors = [
-  { name="Natasha Craike", email="natasha@ncraike.com" },
+  {name = "Natasha Craike", email = "natasha@ncraike.com"},
+]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
+dependencies = [
+  "bottle ~= 0.13.2",
 ]
 description = "A simple autosuggest REST API"
+license = "MIT"
+name = "autosuggest"
 readme = "README.md"
 requires-python = ">=3.10"
-classifiers = [
-    "Programming Language :: Python :: 3",
-    "Operating System :: OS Independent",
-]
-license = "MIT"
-license-files = ["LICEN[CS]E*"]
-
-
+version = "0.0.1"
