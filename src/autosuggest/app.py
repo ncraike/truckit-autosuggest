@@ -1,19 +1,26 @@
 import json
 
-from bottle import Bottle, abort, request
+from bottle import Bottle, request
+from bottle_cors_plugin import abort, cors_headers, cors_plugin
+
 
 from autosuggest.categories import CATEGORIES, build_mapping, lookup_item
+
+
+CORS_ORIGINS = ["http://localhost:5173"]
 
 
 class BottleWithJSONErrors(Bottle):
     """Override Bottle's default error handling to give JSON-formatted errors."""
 
     def default_error_handler(self, res):
+        cors_headers()
         res.content_type = "application/json"
         return json.dumps({"message": res.body})
 
 
 app = BottleWithJSONErrors()
+app.install(cors_plugin(CORS_ORIGINS))
 app.config["categories_mapping"] = build_mapping(CATEGORIES)
 
 

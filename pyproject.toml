@@ -12,6 +12,7 @@ classifiers = [
 ]
 dependencies = [
   "bottle ~= 0.13.2",
+  "bottle-cors-plugin ~= 0.1.9",
 ]
 description = "A simple autosuggest REST API"
 license = "MIT"
