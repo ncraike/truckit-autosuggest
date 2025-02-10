@@ -26,7 +26,7 @@ export async function updateAutosuggest(queryField: HTMLInputElement) {
             responseElement.innerHTML = response;
         }
     } else {
-        responseElement.innerHTML = '';
+        responseElement.innerHTML = '&nbsp;';
     }
 }
 

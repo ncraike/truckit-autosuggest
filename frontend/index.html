@@ -3,16 +3,23 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/simple.min.css">
   <title>Autosuggest Demo</title>
 </head>
 
 <body>
   <script type="module" src="/src/main.ts"></script>
-  <section>
-    <label for="query">Enter an item:</label>
-    <input id="query" name="query" type="search" placeholder="e.g. banana" />
-    <p id="response"></p>
-  </section>
+  <header>
+    <h1>Autosuggest Demo</h1>
+  </header>
+  <main>
+    <form action="javascript:void(0);">
+      <label for="query">Enter an item:</label>
+      <input id="query" name="query" type="search" placeholder="e.g. banana" />
+      <p id="response" class="notice">&nbsp;</p>
+    </form>
+  </main>
 </body>
 
 </html>
