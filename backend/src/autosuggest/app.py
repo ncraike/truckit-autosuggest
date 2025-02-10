@@ -1,13 +1,14 @@
+import os
 import json
 
 from bottle import Bottle, request
 from bottle_cors_plugin import abort, cors_headers, cors_plugin
 
-
 from autosuggest.categories import CATEGORIES, build_mapping, lookup_item
 
-
-CORS_ORIGINS = ["http://localhost:5173"]
+LISTEN_HOST = os.environ.get("LISTEN_HOST", "localhost")
+LISTEN_PORT = int(os.environ.get("LISTEN_PORT", "8080"))
+ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
 
 
 class BottleWithJSONErrors(Bottle):
@@ -20,7 +21,7 @@ class BottleWithJSONErrors(Bottle):
 
 
 app = BottleWithJSONErrors()
-app.install(cors_plugin(CORS_ORIGINS))
+app.install(cors_plugin(ALLOWED_ORIGINS))
 app.config["categories_mapping"] = build_mapping(CATEGORIES)
 
 
@@ -49,4 +50,4 @@ def autosuggest() -> dict[str, str]:
 
 
 if __name__ == "__main__":
-    app.run(host="localhost", port=8080, debug=True)
+    app.run(host=LISTEN_HOST, port=LISTEN_PORT, debug=True)
