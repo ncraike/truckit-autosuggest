@@ -1,5 +1,3 @@
-// import './style.css'
-
 import debounce from 'debounce';
 
 import { lookupCategory } from './autosuggest';
