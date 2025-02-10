@@ -11,6 +11,8 @@ services:
   frontend:
     build: ./frontend
     ports:
-      - "8000:5173"
+      - "8000:8000"
     environment:
+      LISTEN_HOST: "0.0.0.0"
+      LISTEN_PORT: "8000"
       AUTOSUGGEST_API_URL: "http://localhost:7000"
