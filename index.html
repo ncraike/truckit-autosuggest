@@ -9,8 +9,11 @@
 <body>
   <script type="module" src="/src/main.ts"></script>
   <section>
-    <input id="lookup" type="search" placeholder="Enter an item..." />
-    <p id="result"></p>
+    <form id="lookupForm">
+      <input id="query" name="query" type="search" placeholder="Enter an item..." />
+      <input type="submit" value="Lookup" />
+    </form>
+    <p id="response"></p>
   </section>
 </body>
 
