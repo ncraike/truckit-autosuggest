@@ -2,23 +2,25 @@
 
 import { lookupCategory } from "./autosuggest";
 
-export function setupForm(form: HTMLFormElement) {
-    form.addEventListener("submit", (event) => {
-        event.preventDefault();
-        submitForm(form);
+const MIN_QUERY_LEN = 3;
+
+export function setupAutosuggest(queryField: HTMLInputElement) {
+    queryField.addEventListener('input', (_event) => {
+        updateAutosuggest(queryField);
     });
 }
 
-export async function submitForm(form: HTMLFormElement) {
-    const formData = new FormData(form);
-    const query = formData.get("query")
-    if (query) {
+export async function updateAutosuggest(queryField: HTMLInputElement) {
+    const query = queryField.value
+    const responseElement = document.querySelector('#response')!;
+    if (query && query.length >= MIN_QUERY_LEN) {
         const response = await lookupCategory(query.toString());
-        const responseElement = document.querySelector("#response");
-        if (response && responseElement) {
+        if (response) {
             responseElement.innerHTML = response;
         }
+    } else {
+        responseElement.innerHTML = '';
     }
 }
 
-setupForm(document.querySelector<HTMLFormElement>('#lookupForm')!);
+setupAutosuggest(document.querySelector<HTMLInputElement>('#query')!);
