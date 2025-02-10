@@ -7,8 +7,10 @@ from bottle_cors_plugin import abort, cors_headers, cors_plugin
 from autosuggest.categories import CATEGORIES, build_mapping, lookup_item
 
 LISTEN_HOST = os.environ.get("LISTEN_HOST", "localhost")
-LISTEN_PORT = int(os.environ.get("LISTEN_PORT", "8080"))
-ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "http://localhost:5173").split(",")
+LISTEN_PORT = int(os.environ.get("LISTEN_PORT", "7000"))
+ALLOWED_ORIGINS = os.environ.get(
+    "ALLOWED_ORIGINS", "http://localhost:8000,http://localhost:5173"
+).split(",")
 
 
 class BottleWithJSONErrors(Bottle):

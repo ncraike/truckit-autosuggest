@@ -6,6 +6,6 @@ COPY . .
 
 RUN pip install .
 
-EXPOSE 8080
+EXPOSE 7000
 
 CMD ["python3", "src/autosuggest/app.py"]

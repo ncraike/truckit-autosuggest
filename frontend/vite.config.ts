@@ -6,6 +6,6 @@ const fromEnvWithDefault = (envVarName: string, defaultValue: string): string =>
 
 export default defineConfig({
     define: {
-        __AUTOSUGGEST_API_URL__: fromEnvWithDefault('AUTOSUGGEST_API_URL', 'http://localhost:8080'),
+        __AUTOSUGGEST_API_URL__: fromEnvWithDefault('AUTOSUGGEST_API_URL', 'http://localhost:7000'),
     }
 })
